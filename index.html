@@ -30,15 +30,38 @@
             background-attachment: fixed;
         }
         
-        /* Style for date input placeholder */
+        /* Enhanced date input styling */
+        input[type="date"] {
+            color: #9ca3af; /* gray-400 */
+            position: relative;
+        }
         input[type="date"]::-webkit-calendar-picker-indicator {
             filter: invert(1);
+            cursor: pointer;
         }
-        input[type="date"]:in-range::-webkit-datetime-edit-year-field,
-        input[type="date"]:in-range::-webkit-datetime-edit-month-field,
-        input[type="date"]:in-range::-webkit-datetime-edit-day-field,
-        input[type="date"]:in-range::-webkit-datetime-edit-text {
-            color: transparent;
+        input[type="date"]:focus,
+        input[type="date"]:valid {
+            color: #f1f5f9; /* slate-100 */
+        }
+        input[type="date"].has-value {
+            color: #f1f5f9 !important;
+        }
+
+        /* Error states */
+        .input-error {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 1px #ef4444 !important;
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Success states */
+        .input-success {
+            border-color: #22c55e !important;
+            box-shadow: 0 0 0 1px #22c55e !important;
         }
 
         /* Scroll Animation */
@@ -116,6 +139,48 @@
             transition: opacity 0.3s ease;
         }
         .map-pin:hover .pin-label {
+            opacity: 1;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            border: 2px solid #374151;
+            border-top: 2px solid #dc2626;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Form validation tooltips */
+        .tooltip {
+            position: relative;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #374151;
+            color: #f1f5f9;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
             opacity: 1;
         }
     </style>
@@ -333,48 +398,116 @@
             </div>
         </section>
 
-        <!-- Booking Section -->
+        <!-- Enhanced Booking Section -->
         <section id="booking" class="py-24 bg-black">
             <div class="container mx-auto px-6">
                 <div class="reveal bg-gray-900 border border-gray-800 p-8 md:p-12 rounded-2xl shadow-2xl max-w-4xl mx-auto">
                     <h2 class="text-4xl font-bold text-center mb-2">Make a Reservation</h2>
                     <p class="text-center text-gray-400 mb-10">Availability is limited. Submit your request and we will confirm via email.</p>
                     
-                    <form id="bookingForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="guest_name" class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
-                            <input type="text" id="guest_name" name="guest_name" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                    <form id="bookingForm" class="grid grid-cols-1 md:grid-cols-2 gap-6" novalidate>
+                        <!-- Guest Name -->
+                        <div class="form-group">
+                            <label for="guest_name" class="block text-sm font-medium text-gray-400 mb-2">Full Name *</label>
+                            <input type="text" id="guest_name" name="guest_name" required 
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+                                   autocomplete="name">
+                            <div class="error-message hidden" id="guest_name_error"></div>
                         </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+                                   autocomplete="email">
+                            <div class="error-message hidden" id="email_error"></div>
                         </div>
-                        <div>
-                            <label for="check_in_date" class="block text-sm font-medium text-gray-400 mb-2">Check-in Date</label>
-                            <input type="date" id="check_in_date" name="check_in_date" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-400 transition" onchange="this.style.color='inherit'">
+
+                        <!-- Check-in Date -->
+                        <div class="form-group tooltip">
+                            <label for="check_in_date" class="block text-sm font-medium text-gray-400 mb-2">Check-in Date *</label>
+                            <input type="date" id="check_in_date" name="check_in_date" required 
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+                                   autocomplete="off">
+                            <span class="tooltip-text">Earliest check-in is tomorrow</span>
+                            <div class="error-message hidden" id="check_in_date_error"></div>
                         </div>
-                        <div>
-                            <label for="check_out_date" class="block text-sm font-medium text-gray-400 mb-2">Check-out Date</label>
-                            <input type="date" id="check_out_date" name="check_out_date" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-400 transition" onchange="this.style.color='inherit'">
+
+                        <!-- Check-out Date -->
+                        <div class="form-group tooltip">
+                            <label for="check_out_date" class="block text-sm font-medium text-gray-400 mb-2">Check-out Date *</label>
+                            <input type="date" id="check_out_date" name="check_out_date" required 
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
+                                   autocomplete="off">
+                            <span class="tooltip-text">Must be at least one day after check-in</span>
+                            <div class="error-message hidden" id="check_out_date_error"></div>
                         </div>
+
+                        <!-- Number of Guests -->
+                        <div class="form-group">
+                            <label for="guests" class="block text-sm font-medium text-gray-400 mb-2">Number of Guests *</label>
+                            <select id="guests" name="guests" required 
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                                <option value="">Select guests</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5+ Guests</option>
+                            </select>
+                            <div class="error-message hidden" id="guests_error"></div>
+                        </div>
+
+                        <!-- Room Type -->
+                        <div class="form-group">
+                            <label for="room_type" class="block text-sm font-medium text-gray-400 mb-2">Preferred Room Type</label>
+                            <select id="room_type" name="room_type" 
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition">
+                                <option value="">Any Available</option>
+                                <option value="standard">Standard Room</option>
+                                <option value="deluxe">Deluxe Room</option>
+                                <option value="executive">Executive Suite</option>
+                            </select>
+                        </div>
+
+                        <!-- Purpose of Visit -->
+                        <div class="md:col-span-2 form-group">
+                            <label for="purpose_of_visit" class="block text-sm font-medium text-gray-400 mb-2">Purpose of Visit *</label>
+                            <textarea id="purpose_of_visit" name="purpose_of_visit" rows="3" required
+                                      placeholder="e.g., Attending a conference, visiting family, official work..." 
+                                      class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition resize-none"></textarea>
+                            <div class="error-message hidden" id="purpose_of_visit_error"></div>
+                        </div>
+
+                        <!-- AI Welcome Note Generator -->
                         <div class="md:col-span-2">
-                            <label for="purpose_of_visit" class="block text-sm font-medium text-gray-400 mb-2">Purpose of Visit</label>
-                            <textarea id="purpose_of_visit" name="purpose_of_visit" rows="3" placeholder="e.g., Attending a conference, visiting family, official work..." class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"></textarea>
-                        </div>
-                        <div class="md:col-span-2">
-                            <button type="button" id="generate-welcome-btn" class="w-full bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-600 transition duration-300">
+                            <button type="button" id="generate-welcome-btn" 
+                                    class="w-full bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                                 ✨ Generate a Personal Welcome Note
                             </button>
                         </div>
                         <div id="welcome-note-output" class="md:col-span-2 mt-4 p-4 rounded-lg ai-content min-h-[80px] text-gray-300 hidden"></div>
 
+                        <!-- Stay Duration Display -->
+                        <div class="md:col-span-2">
+                            <div id="stay-duration" class="text-center p-4 bg-gray-800 rounded-lg border border-gray-700 hidden">
+                                <span class="text-gray-400">Duration: </span>
+                                <span class="text-white font-semibold" id="duration-text"></span>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
                         <div class="md:col-span-2 text-center mt-6">
-                            <button type="submit" class="w-full md:w-auto bg-red-600 text-white font-bold px-16 py-4 rounded-lg hover:bg-red-700 transition duration-300 shadow-lg red-glow text-lg transform hover:scale-105">
+                            <button type="submit" id="submit-btn"
+                                    class="w-full md:w-auto bg-red-600 text-white font-bold px-16 py-4 rounded-lg hover:bg-red-700 transition duration-300 shadow-lg red-glow text-lg transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
                                 Submit Request
                             </button>
                         </div>
                     </form>
-                    <div id="responseMessage" class="mt-6 text-center font-medium h-6"></div>
+                    
+                    <!-- Response Message -->
+                    <div id="responseMessage" class="mt-6 text-center font-medium min-h-[1.5rem]"></div>
                 </div>
             </div>
         </section>
@@ -398,6 +531,244 @@
     </div>
 
     <script>
+        // --- ENHANCED BOOKING FORM WITH ROBUST DATE VALIDATION ---
+        class BookingFormHandler {
+            constructor() {
+                this.form = document.getElementById('bookingForm');
+                this.checkInInput = document.getElementById('check_in_date');
+                this.checkOutInput = document.getElementById('check_out_date');
+                this.guestsSelect = document.getElementById('guests');
+                this.submitBtn = document.getElementById('submit-btn');
+                this.responseMessage = document.getElementById('responseMessage');
+                this.durationDisplay = document.getElementById('stay-duration');
+                this.durationText = document.getElementById('duration-text');
+                
+                this.init();
+            }
+
+            init() {
+                this.setMinDates();
+                this.bindEvents();
+            }
+
+            setMinDates() {
+                const today = new Date();
+                const tomorrow = new Date(today);
+                tomorrow.setDate(today.getDate() + 1);
+                
+                const minDate = tomorrow.toISOString().split('T')[0];
+                this.checkInInput.setAttribute('min', minDate);
+                this.checkOutInput.setAttribute('min', minDate);
+            }
+
+            bindEvents() {
+                // Real-time validation
+                this.checkInInput.addEventListener('change', () => this.handleCheckInChange());
+                this.checkOutInput.addEventListener('change', () => this.handleCheckOutChange());
+                this.form.addEventListener('input', (e) => this.clearFieldError(e.target));
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+                
+                // Style date inputs when they have values
+                [this.checkInInput, this.checkOutInput].forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        if (e.target.value) {
+                            e.target.classList.add('has-value');
+                        } else {
+                            e.target.classList.remove('has-value');
+                        }
+                    });
+                });
+            }
+
+            handleCheckInChange() {
+                const checkInDate = this.checkInInput.value;
+                this.clearFieldError(this.checkInInput);
+                
+                if (checkInDate) {
+                    // Set minimum check-out date to the day after check-in
+                    const checkIn = new Date(checkInDate);
+                    const minCheckOut = new Date(checkIn);
+                    minCheckOut.setDate(checkIn.getDate() + 1);
+                    
+                    const minCheckOutStr = minCheckOut.toISOString().split('T')[0];
+                    this.checkOutInput.setAttribute('min', minCheckOutStr);
+                    
+                    // Clear check-out if it's now invalid
+                    if (this.checkOutInput.value && this.checkOutInput.value <= checkInDate) {
+                        this.checkOutInput.value = '';
+                        this.checkOutInput.classList.remove('has-value');
+                    }
+                    
+                    this.updateDuration();
+                    this.validateCheckInDate();
+                }
+            }
+
+            handleCheckOutChange() {
+                this.clearFieldError(this.checkOutInput);
+                this.updateDuration();
+                this.validateCheckOutDate();
+            }
+
+            validateCheckInDate() {
+                const checkInValue = this.checkInInput.value;
+                if (!checkInValue) return true;
+
+                const checkInDate = new Date(checkInValue);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                if (checkInDate <= today) {
+                    this.showFieldError(this.checkInInput, 'Check-in date must be in the future');
+                    return false;
+                }
+                
+                return true;
+            }
+
+            validateCheckOutDate() {
+                const checkInValue = this.checkInInput.value;
+                const checkOutValue = this.checkOutInput.value;
+                
+                if (!checkInValue || !checkOutValue) return true;
+
+                const checkInDate = new Date(checkInValue);
+                const checkOutDate = new Date(checkOutValue);
+                
+                if (checkOutDate <= checkInDate) {
+                    this.showFieldError(this.checkOutInput, 'Check-out date must be after check-in date');
+                    return false;
+                }
+                
+                return true;
+            }
+
+            updateDuration() {
+                const checkInValue = this.checkInInput.value;
+                const checkOutValue = this.checkOutInput.value;
+                
+                if (checkInValue && checkOutValue) {
+                    const checkIn = new Date(checkInValue);
+                    const checkOut = new Date(checkOutValue);
+                    const diffTime = checkOut - checkIn;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    if (diffDays > 0) {
+                        this.durationText.textContent = `${diffDays} night${diffDays !== 1 ? 's' : ''}`;
+                        this.durationDisplay.classList.remove('hidden');
+                    } else {
+                        this.durationDisplay.classList.add('hidden');
+                    }
+                } else {
+                    this.durationDisplay.classList.add('hidden');
+                }
+            }
+
+            validateForm() {
+                let isValid = true;
+                
+                // Validate required text fields
+                const requiredFields = ['guest_name', 'email', 'check_in_date', 'check_out_date', 'guests', 'purpose_of_visit'];
+                requiredFields.forEach(fieldName => {
+                    const field = document.getElementById(fieldName);
+                    if (!field.value.trim()) {
+                        this.showFieldError(field, 'This field is required');
+                        isValid = false;
+                    }
+                });
+
+                // Validate email format
+                const emailField = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailField.value && !emailRegex.test(emailField.value)) {
+                    this.showFieldError(emailField, 'Please enter a valid email address');
+                    isValid = false;
+                }
+
+                // Validate dates
+                if (!this.validateCheckInDate() || !this.validateCheckOutDate()) {
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            showFieldError(field, message) {
+                field.classList.add('input-error');
+                const errorId = field.id + '_error';
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.classList.remove('hidden');
+                }
+            }
+
+            clearFieldError(field) {
+                field.classList.remove('input-error', 'input-success');
+                const errorId = field.id + '_error';
+                const errorElement = document.getElementById(errorId);
+                if (errorElement) {
+                    errorElement.classList.add('hidden');
+                }
+            }
+
+            showFieldSuccess(field) {
+                field.classList.add('input-success');
+                field.classList.remove('input-error');
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                
+                if (!this.validateForm()) {
+                    this.showMessage('Please fix the errors above and try again.', 'error');
+                    return;
+                }
+
+                this.submitBtn.disabled = true;
+                this.submitBtn.innerHTML = '<div class="spinner"></div>Processing...';
+                this.showMessage('Submitting your request...', 'info');
+
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Mock successful response
+                    this.showMessage('Request received! We will confirm your booking via email within 24 hours.', 'success');
+                    this.form.reset();
+                    this.durationDisplay.classList.add('hidden');
+                    
+                    // Reset date input styling
+                    [this.checkInInput, this.checkOutInput].forEach(input => {
+                        input.classList.remove('has-value');
+                    });
+                    
+                    // Hide welcome note
+                    document.getElementById('welcome-note-output').classList.add('hidden');
+                    
+                } catch (error) {
+                    this.showMessage('An error occurred while submitting your request. Please try again.', 'error');
+                } finally {
+                    this.submitBtn.disabled = false;
+                    this.submitBtn.innerHTML = 'Submit Request';
+                }
+            }
+
+            showMessage(message, type) {
+                this.responseMessage.textContent = message;
+                this.responseMessage.className = `mt-6 text-center font-medium min-h-[1.5rem] ${
+                    type === 'success' ? 'text-green-500' :
+                    type === 'error' ? 'text-red-500' : 
+                    'text-gray-300'
+                }`;
+            }
+        }
+
+        // Initialize booking form when DOM loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new BookingFormHandler();
+        });
+
         // --- DYNAMIC HEADER ---
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
@@ -445,14 +816,12 @@
             }
         });
 
-        // --- GEMINI API CALLER (UPDATED FOR VERCEL) ---
+        // --- GEMINI API CALLER (FOR VERCEL DEPLOYMENT) ---
         async function callGemini(prompt, outputElement, buttonElement) {
-            outputElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            outputElement.innerHTML = '<div class="spinner"></div> Generating...';
             if (buttonElement) buttonElement.disabled = true;
 
-            // The new API endpoint is our own serverless function
             const apiUrl = '/api/gemini';
-            
             const payload = { prompt: prompt };
 
             try {
@@ -473,8 +842,6 @@
                     const text = result.candidates[0].content.parts[0].text;
                     outputElement.innerText = text.replace(/\*/g, ''); // Basic formatting
                 } else {
-                    // Handle cases where the API returns a 200 OK but no candidates
-                    // This can happen with safety settings or other issues.
                     const errorMessage = result.promptFeedback ? result.promptFeedback.blockReason : "No content received from API.";
                     throw new Error(errorMessage);
                 }
@@ -500,7 +867,7 @@
                 return;
             }
             
-            const prompt = `Generate a short, warm, and professional welcome message for a guest named "${guestName}" who is visiting Thapar Institute for the following reason: "${purpose}". The message should be about 2-3 sentences long.`;
+            const prompt = `Generate a short, warm, and professional welcome message for a guest named "${guestName}" who is visiting Thapar Institute for the following reason: "${purpose}". The message should be about 2-3 sentences long and welcoming.`;
             callGemini(prompt, welcomeNoteOutput, generateWelcomeBtn);
         });
 
@@ -509,20 +876,16 @@
         const campusInfoOutput = document.getElementById('campus-info-output');
         locationCards.forEach(card => {
             card.addEventListener('click', () => {
-                // Deactivate all other cards
                 locationCards.forEach(c => c.classList.remove('active'));
-                // Activate the clicked card
                 card.classList.add('active');
 
                 const location = card.dataset.location;
                 const prompt = `As a virtual tour guide for Thapar Institute of Engineering and Technology, write a vibrant and engaging 3-4 sentence description of the "${location}". Highlight its key features and the atmosphere on campus. Make it sound appealing to a first-time visitor or prospective student.`;
                 
-                // Disable all cards during API call
                 const allCampusCards = document.querySelectorAll('.campus-card');
                 allCampusCards.forEach(c => c.style.pointerEvents = 'none');
                 
                 callGemini(prompt, campusInfoOutput, null).finally(() => {
-                    // Re-enable all cards after API call is complete
                     allCampusCards.forEach(c => c.style.pointerEvents = 'auto');
                 });
             });
@@ -630,49 +993,6 @@
         // Initial render
         renderLocationList();
         selectLocation(locations.Academic[0]); // Select Guest House by default
-
-        // --- FORM SUBMISSION ---
-        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
-            const responseElement = document.getElementById('responseMessage');
-            const submitButton = form.querySelector('button[type="submit"]');
-            const bookingData = Object.fromEntries(new FormData(form).entries());
-
-            if (new Date(bookingData.check_out_date) <= new Date(bookingData.check_in_date)) {
-                responseElement.textContent = 'Check-out date must be after the check-in date.';
-                responseElement.style.color = '#ef4444'; // red-500
-                return;
-            }
-            
-            responseElement.textContent = 'Submitting...';
-            responseElement.style.color = '#f1f5f9'; // slate-100
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-
-            try {
-                // MOCK API CALL - Replace with your actual endpoint
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                const mockResponse = { ok: true };
-                
-                if (mockResponse.ok) {
-                    responseElement.textContent = 'Request received! We will confirm via email shortly.';
-                    responseElement.style.color = '#22c55e'; // green-500
-                    form.reset();
-                    document.querySelectorAll('input[type="date"]').forEach(el => el.style.color = 'transparent');
-                    welcomeNoteOutput.classList.add('hidden');
-                } else {
-                    responseElement.textContent = 'Error: Could not submit booking.';
-                    responseElement.style.color = '#ef4444'; // red-500
-                }
-            } catch (error) {
-                responseElement.textContent = 'A network error occurred. Please try again.';
-                responseElement.style.color = '#ef4444'; // red-500
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerHTML = 'Submit Request';
-            }
-        });
     </script>
 
 </body>

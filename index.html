@@ -182,6 +182,37 @@
         .tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
+
+        .campus-card {
+    transform: translateY(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.campus-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(239, 68, 68, 0.3);
+}
+
+.campus-card img {
+    transition: transform 0.3s ease;
+}
+
+.campus-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Loading state for images */
+.campus-card img {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
         }
     </style>
 </head>
@@ -238,7 +269,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <!-- Room Card 1 -->
                     <div class="reveal bg-black rounded-lg shadow-2xl overflow-hidden group border border-gray-800">
-                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/1a1a1a/f1f5f9?text=Standard+Room" alt="Standard Room" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div class="overflow-hidden"><img src="kettaphoto140600016.jpg" alt="Standard Room" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';"></div>
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2 text-white">Standard Room</h3>
                             <p class="text-gray-400 mb-4">The perfect blend of function and comfort for the discerning guest.</p>
@@ -250,7 +281,7 @@
                     </div>
                     <!-- Room Card 2 -->
                     <div class="reveal bg-black rounded-lg shadow-2xl overflow-hidden group border border-gray-800" style="transition-delay: 150ms;">
-                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/1a1a1a/f1f5f9?text=Deluxe+Room" alt="Deluxe Room" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div class="overflow-hidden"><img src="hotel-room-interior-modern-seaside-600nw-1387008533.jpg.webp" alt="Deluxe Room" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';"></div>
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2 text-white">Deluxe Room</h3>
                             <p class="text-gray-400 mb-4">Spacious interiors and upgraded amenities for a truly relaxing stay.</p>
@@ -263,7 +294,7 @@
                     </div>
                     <!-- Room Card 3 -->
                     <div class="reveal bg-black rounded-lg shadow-2xl overflow-hidden group border border-gray-800" style="transition-delay: 300ms;">
-                        <div class="overflow-hidden"><img src="https://placehold.co/600x400/1a1a1a/f1f5f9?text=Executive+Suite" alt="Suite" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div class="overflow-hidden"><img src="istockphoto-1050564510-612x612.jpg" alt="Suite" class="w-full h-60 object-cover transform group-hover:scale-110 transition-transform duration-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';"></div>
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2 text-white">Executive Suite</h3>
                             <p class="text-gray-400 mb-4">The pinnacle of luxury with a separate lounge for work or relaxation.</p>
@@ -317,20 +348,20 @@
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="reveal grid gap-4">
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x800/1a1a1a/f1f5f9?text=Library" alt="Thapar Library" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x500/1a1a1a/f1f5f9?text=Library" alt="Atal Library" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="4448-157.jpg" alt="Thapar Library" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="thapar-institute-of-engineering-technology-patiala-214568.jpg" alt="Atal Library" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
                     </div>
                     <div class="reveal grid gap-4" style="transition-delay: 150ms;">
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x500/1a1a1a/f1f5f9?text=Academic+Block" alt="Science and Technology Block" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x800/1a1a1a/f1f5f9?text=Lecture+Hall" alt="New Lecture Hall Complex" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="image_1734687293785_4yoYAZK1k.webp" alt="Science and Technology Block" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="1691338216334.jpeg" alt="New Lecture Hall Complex" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
                     </div>
                     <div class="reveal grid gap-4" style="transition-delay: 300ms;">
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x800/1a1a1a/f1f5f9?text=Classroom" alt="Smart Classroom" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x500/1a1a1a/f1f5f9?text=Hostel" alt="Hostel J" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="event7_37232.jpg" alt="Smart Classroom" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="hostel-j-prem-nagar-patiala-hostel-for-students-296mpne0ew.jpg.avif" alt="Hostel J" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
                     </div>
                     <div class="reveal grid gap-4" style="transition-delay: 450ms;">
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x500/1a1a1a/f1f5f9?text=Sports+Complex" alt="Sports Complex" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
-                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="https://placehold.co/500x800/1a1a1a/f1f5f9?text=Campus+Event" alt="Campus Event" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="(7)_VOLLEYBALL_GROUND.jpg" alt="Sports Complex" onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Image+Not+Found';"></div>
+                        <div><img class="gallery-item h-auto max-w-full rounded-lg cursor-pointer transform hover:scale-105 transition-transform" src="GAkafElWoAAuKWy.jpeg" alt="Campus Event" onerror="this.onerror=null;this.src='https://placehold.co/500x800/cccccc/ffffff?text=Image+Not+Found';"></div>
                     </div>
                 </div>
             </div>
@@ -338,38 +369,71 @@
         
         <!-- Explore Campus Section -->
         <section id="explore" class="py-24 bg-black">
-            <div class="container mx-auto px-6">
-                <div class="reveal text-center">
-                    <h2 class="text-4xl font-bold mb-2">An Interactive Campus Tour</h2>
-                    <p class="text-gray-400 mb-12">Click on a location to learn more from our AI tour guide.</p>
-                </div>
-                <div class="reveal max-w-5xl mx-auto">
-                    <!-- Location Cards -->
-                    <div id="campus-locations" class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                        <div class="campus-card cursor-pointer bg-gray-900 p-6 rounded-lg border-2 border-gray-800 text-center" data-location="Nava Nalanda Library">
-                            <i class="fa-solid fa-book-open text-4xl text-red-500 mb-3"></i>
-                            <h3 class="font-bold">Library</h3>
-                        </div>
-                        <div class="campus-card cursor-pointer bg-gray-900 p-6 rounded-lg border-2 border-gray-800 text-center" data-location="Sports Complex">
-                            <i class="fa-solid fa-person-running text-4xl text-red-500 mb-3"></i>
-                            <h3 class="font-bold">Sports Complex</h3>
-                        </div>
-                        <div class="campus-card cursor-pointer bg-gray-900 p-6 rounded-lg border-2 border-gray-800 text-center" data-location="Academic Blocks">
-                            <i class="fa-solid fa-microscope text-4xl text-red-500 mb-3"></i>
-                            <h3 class="font-bold">Academic Blocks</h3>
-                        </div>
-                        <div class="campus-card cursor-pointer bg-gray-900 p-6 rounded-lg border-2 border-gray-800 text-center" data-location="Student Hangouts">
-                            <i class="fa-solid fa-mug-saucer text-4xl text-red-500 mb-3"></i>
-                            <h3 class="font-bold">Student Hangouts</h3>
-                        </div>
+    <div class="container mx-auto px-6">
+        <div class="reveal text-center">
+            <h2 class="text-4xl font-bold mb-2">An Interactive Campus Tour</h2>
+            <p class="text-gray-400 mb-12">Click on a location to learn more from our AI tour guide.</p>
+        </div>
+        <div class="reveal max-w-5xl mx-auto">
+            <!-- Location Cards with Images -->
+            <div id="campus-locations" class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                <!-- Library Card -->
+                <div class="campus-card cursor-pointer bg-gray-900 rounded-lg border-2 border-gray-800 overflow-hidden hover:border-red-500 transition-all duration-300" data-location="Nava Nalanda Library">
+                    <div class="relative h-32 overflow-hidden">
+                        <img src="nava-library.jpg" alt="Nava Nalanda Library" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                        <i class="fa-solid fa-book-open absolute top-2 right-2 text-2xl text-red-500"></i>
                     </div>
-                    <!-- AI Output -->
-                    <div id="campus-info-output" class="p-8 rounded-lg ai-content min-h-[150px] text-gray-300">
-                        Select a location above to begin your virtual tour...
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-white">Library</h3>
+                    </div>
+                </div>
+
+                <!-- Sports Complex Card -->
+                <div class="campus-card cursor-pointer bg-gray-900 rounded-lg border-2 border-gray-800 overflow-hidden hover:border-red-500 transition-all duration-300" data-location="Sports Complex">
+                    <div class="relative h-32 overflow-hidden">
+                        <img src="(7)_VOLLEYBALL_GROUND.jpg" alt="Sports Complex" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                        <i class="fa-solid fa-person-running absolute top-2 right-2 text-2xl text-red-500"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-white">Sports Complex</h3>
+                    </div>
+                </div>
+
+                <!-- Academic Blocks Card -->
+                <div class="campus-card cursor-pointer bg-gray-900 rounded-lg border-2 border-gray-800 overflow-hidden hover:border-red-500 transition-all duration-300" data-location="Academic Blocks">
+                    <div class="relative h-32 overflow-hidden">
+                        <img src="image_1734687293785_4yoYAZK1k.webp" alt="Academic Blocks" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                        <i class="fa-solid fa-microscope absolute top-2 right-2 text-2xl text-red-500"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-white">Academic Blocks</h3>
+                    </div>
+                </div>
+
+                <!-- Student Hangouts Card -->
+                <div class="campus-card cursor-pointer bg-gray-900 rounded-lg border-2 border-gray-800 overflow-hidden hover:border-red-500 transition-all duration-300" data-location="Student Hangouts">
+                    <div class="relative h-32 overflow-hidden">
+                        <img src="dgoKUjtJRXgYhMB-1600x900-noPad.jpg" alt="Student Hangouts" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                        <i class="fa-solid fa-mug-saucer absolute top-2 right-2 text-2xl text-red-500"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-white">Student Hangouts</h3>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- AI Output -->
+            <div id="campus-info-output" class="p-8 rounded-lg ai-content min-h-[150px] text-gray-300">
+                Select a location above to begin your virtual tour...
+            </div>
+        </div>
+    </div>
+</section>
+
 
         <!-- Amenities Section -->
         <section id="amenities" class="py-24 bg-gray-900">
@@ -531,469 +595,497 @@
     </div>
 
     <script>
-        // --- ENHANCED BOOKING FORM WITH ROBUST DATE VALIDATION ---
-        class BookingFormHandler {
-            constructor() {
-                this.form = document.getElementById('bookingForm');
-                this.checkInInput = document.getElementById('check_in_date');
-                this.checkOutInput = document.getElementById('check_out_date');
-                this.guestsSelect = document.getElementById('guests');
-                this.submitBtn = document.getElementById('submit-btn');
-                this.responseMessage = document.getElementById('responseMessage');
-                this.durationDisplay = document.getElementById('stay-duration');
-                this.durationText = document.getElementById('duration-text');
-                
-                this.init();
-            }
+       // --- ENHANCED BOOKING FORM WITH ROBUST DATE VALIDATION ---
+class BookingFormHandler {
+    constructor() {
+        this.form = document.getElementById('bookingForm');
+        this.checkInInput = document.getElementById('check_in_date');
+        this.checkOutInput = document.getElementById('check_out_date');
+        this.guestsSelect = document.getElementById('guests');
+        this.submitBtn = document.getElementById('submit-btn');
+        this.responseMessage = document.getElementById('responseMessage');
+        this.durationDisplay = document.getElementById('stay-duration');
+        this.durationText = document.getElementById('duration-text');
+        
+        this.init();
+    }
 
-            init() {
-                this.setMinDates();
-                this.bindEvents();
-            }
+    init() {
+        this.setMinDates();
+        this.bindEvents();
+    }
 
-            setMinDates() {
-                const today = new Date();
-                const tomorrow = new Date(today);
-                tomorrow.setDate(today.getDate() + 1);
-                
-                const minDate = tomorrow.toISOString().split('T')[0];
-                this.checkInInput.setAttribute('min', minDate);
-                this.checkOutInput.setAttribute('min', minDate);
-            }
+    setMinDates() {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+        
+        const minDate = tomorrow.toISOString().split('T')[0];
+        this.checkInInput.setAttribute('min', minDate);
+        this.checkOutInput.setAttribute('min', minDate);
+    }
 
-            bindEvents() {
-                // Real-time validation
-                this.checkInInput.addEventListener('change', () => this.handleCheckInChange());
-                this.checkOutInput.addEventListener('change', () => this.handleCheckOutChange());
-                this.form.addEventListener('input', (e) => this.clearFieldError(e.target));
-                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-                
-                // Style date inputs when they have values
-                [this.checkInInput, this.checkOutInput].forEach(input => {
-                    input.addEventListener('change', (e) => {
-                        if (e.target.value) {
-                            e.target.classList.add('has-value');
-                        } else {
-                            e.target.classList.remove('has-value');
-                        }
-                    });
-                });
-            }
-
-            handleCheckInChange() {
-                const checkInDate = this.checkInInput.value;
-                this.clearFieldError(this.checkInInput);
-                
-                if (checkInDate) {
-                    // Set minimum check-out date to the day after check-in
-                    const checkIn = new Date(checkInDate);
-                    const minCheckOut = new Date(checkIn);
-                    minCheckOut.setDate(checkIn.getDate() + 1);
-                    
-                    const minCheckOutStr = minCheckOut.toISOString().split('T')[0];
-                    this.checkOutInput.setAttribute('min', minCheckOutStr);
-                    
-                    // Clear check-out if it's now invalid
-                    if (this.checkOutInput.value && this.checkOutInput.value <= checkInDate) {
-                        this.checkOutInput.value = '';
-                        this.checkOutInput.classList.remove('has-value');
-                    }
-                    
-                    this.updateDuration();
-                    this.validateCheckInDate();
-                }
-            }
-
-            handleCheckOutChange() {
-                this.clearFieldError(this.checkOutInput);
-                this.updateDuration();
-                this.validateCheckOutDate();
-            }
-
-            validateCheckInDate() {
-                const checkInValue = this.checkInInput.value;
-                if (!checkInValue) return true;
-
-                const checkInDate = new Date(checkInValue);
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                
-                if (checkInDate <= today) {
-                    this.showFieldError(this.checkInInput, 'Check-in date must be in the future');
-                    return false;
-                }
-                
-                return true;
-            }
-
-            validateCheckOutDate() {
-                const checkInValue = this.checkInInput.value;
-                const checkOutValue = this.checkOutInput.value;
-                
-                if (!checkInValue || !checkOutValue) return true;
-
-                const checkInDate = new Date(checkInValue);
-                const checkOutDate = new Date(checkOutValue);
-                
-                if (checkOutDate <= checkInDate) {
-                    this.showFieldError(this.checkOutInput, 'Check-out date must be after check-in date');
-                    return false;
-                }
-                
-                return true;
-            }
-
-            updateDuration() {
-                const checkInValue = this.checkInInput.value;
-                const checkOutValue = this.checkOutInput.value;
-                
-                if (checkInValue && checkOutValue) {
-                    const checkIn = new Date(checkInValue);
-                    const checkOut = new Date(checkOutValue);
-                    const diffTime = checkOut - checkIn;
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                    
-                    if (diffDays > 0) {
-                        this.durationText.textContent = `${diffDays} night${diffDays !== 1 ? 's' : ''}`;
-                        this.durationDisplay.classList.remove('hidden');
-                    } else {
-                        this.durationDisplay.classList.add('hidden');
-                    }
+    bindEvents() {
+        // Real-time validation
+        this.checkInInput.addEventListener('change', () => this.handleCheckInChange());
+        this.checkOutInput.addEventListener('change', () => this.handleCheckOutChange());
+        this.form.addEventListener('input', (e) => this.clearFieldError(e.target));
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        
+        // Style date inputs when they have values
+        [this.checkInInput, this.checkOutInput].forEach(input => {
+            input.addEventListener('change', (e) => {
+                if (e.target.value) {
+                    e.target.classList.add('has-value');
                 } else {
-                    this.durationDisplay.classList.add('hidden');
+                    e.target.classList.remove('has-value');
                 }
-            }
-
-            validateForm() {
-                let isValid = true;
-                
-                // Validate required text fields
-                const requiredFields = ['guest_name', 'email', 'check_in_date', 'check_out_date', 'guests', 'purpose_of_visit'];
-                requiredFields.forEach(fieldName => {
-                    const field = document.getElementById(fieldName);
-                    if (!field.value.trim()) {
-                        this.showFieldError(field, 'This field is required');
-                        isValid = false;
-                    }
-                });
-
-                // Validate email format
-                const emailField = document.getElementById('email');
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (emailField.value && !emailRegex.test(emailField.value)) {
-                    this.showFieldError(emailField, 'Please enter a valid email address');
-                    isValid = false;
-                }
-
-                // Validate dates
-                if (!this.validateCheckInDate() || !this.validateCheckOutDate()) {
-                    isValid = false;
-                }
-
-                return isValid;
-            }
-
-            showFieldError(field, message) {
-                field.classList.add('input-error');
-                const errorId = field.id + '_error';
-                const errorElement = document.getElementById(errorId);
-                if (errorElement) {
-                    errorElement.textContent = message;
-                    errorElement.classList.remove('hidden');
-                }
-            }
-
-            clearFieldError(field) {
-                field.classList.remove('input-error', 'input-success');
-                const errorId = field.id + '_error';
-                const errorElement = document.getElementById(errorId);
-                if (errorElement) {
-                    errorElement.classList.add('hidden');
-                }
-            }
-
-            showFieldSuccess(field) {
-                field.classList.add('input-success');
-                field.classList.remove('input-error');
-            }
-
-            async handleSubmit(e) {
-                e.preventDefault();
-                
-                if (!this.validateForm()) {
-                    this.showMessage('Please fix the errors above and try again.', 'error');
-                    return;
-                }
-
-                this.submitBtn.disabled = true;
-                this.submitBtn.innerHTML = '<div class="spinner"></div>Processing...';
-                this.showMessage('Submitting your request...', 'info');
-
-                try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    // Mock successful response
-                    this.showMessage('Request received! We will confirm your booking via email within 24 hours.', 'success');
-                    this.form.reset();
-                    this.durationDisplay.classList.add('hidden');
-                    
-                    // Reset date input styling
-                    [this.checkInInput, this.checkOutInput].forEach(input => {
-                        input.classList.remove('has-value');
-                    });
-                    
-                    // Hide welcome note
-                    document.getElementById('welcome-note-output').classList.add('hidden');
-                    
-                } catch (error) {
-                    this.showMessage('An error occurred while submitting your request. Please try again.', 'error');
-                } finally {
-                    this.submitBtn.disabled = false;
-                    this.submitBtn.innerHTML = 'Submit Request';
-                }
-            }
-
-            showMessage(message, type) {
-                this.responseMessage.textContent = message;
-                this.responseMessage.className = `mt-6 text-center font-medium min-h-[1.5rem] ${
-                    type === 'success' ? 'text-green-500' :
-                    type === 'error' ? 'text-red-500' : 
-                    'text-gray-300'
-                }`;
-            }
-        }
-
-        // Initialize booking form when DOM loads
-        document.addEventListener('DOMContentLoaded', () => {
-            new BookingFormHandler();
+            });
         });
+    }
 
-        // --- DYNAMIC HEADER ---
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
+    handleCheckInChange() {
+        const checkInDate = this.checkInInput.value;
+        this.clearFieldError(this.checkInInput);
+        
+        if (checkInDate) {
+            // Set minimum check-out date to the day after check-in
+            const checkIn = new Date(checkInDate);
+            const minCheckOut = new Date(checkIn);
+            minCheckOut.setDate(checkIn.getDate() + 1);
+            
+            const minCheckOutStr = minCheckOut.toISOString().split('T')[0];
+            this.checkOutInput.setAttribute('min', minCheckOutStr);
+            
+            // Clear check-out if it's now invalid
+            if (this.checkOutInput.value && this.checkOutInput.value <= checkInDate) {
+                this.checkOutInput.value = '';
+                this.checkOutInput.classList.remove('has-value');
+            }
+            
+            this.updateDuration();
+            this.validateCheckInDate();
+        }
+    }
+
+    handleCheckOutChange() {
+        this.clearFieldError(this.checkOutInput);
+        this.updateDuration();
+        this.validateCheckOutDate();
+    }
+
+    validateCheckInDate() {
+        const checkInValue = this.checkInInput.value;
+        if (!checkInValue) return true;
+
+        const checkInDate = new Date(checkInValue);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        if (checkInDate <= today) {
+            this.showFieldError(this.checkInInput, 'Check-in date must be in the future');
+            return false;
+        }
+        
+        return true;
+    }
+
+    validateCheckOutDate() {
+        const checkInValue = this.checkInInput.value;
+        const checkOutValue = this.checkOutInput.value;
+        
+        if (!checkInValue || !checkOutValue) return true;
+
+        const checkInDate = new Date(checkInValue);
+        const checkOutDate = new Date(checkOutValue);
+        
+        if (checkOutDate <= checkInDate) {
+            this.showFieldError(this.checkOutInput, 'Check-out date must be after check-in date');
+            return false;
+        }
+        
+        return true;
+    }
+
+    updateDuration() {
+        const checkInValue = this.checkInInput.value;
+        const checkOutValue = this.checkOutInput.value;
+        
+        if (checkInValue && checkOutValue) {
+            const checkIn = new Date(checkInValue);
+            const checkOut = new Date(checkOutValue);
+            const diffTime = checkOut - checkIn;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays > 0) {
+                this.durationText.textContent = `${diffDays} night${diffDays !== 1 ? 's' : ''}`;
+                this.durationDisplay.classList.remove('hidden');
             } else {
-                header.classList.remove('header-scrolled');
+                this.durationDisplay.classList.add('hidden');
+            }
+        } else {
+            this.durationDisplay.classList.add('hidden');
+        }
+    }
+
+    validateForm() {
+        let isValid = true;
+        
+        // Validate required text fields
+        const requiredFields = ['guest_name', 'email', 'check_in_date', 'check_out_date', 'guests', 'purpose_of_visit'];
+        requiredFields.forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            if (!field.value.trim()) {
+                this.showFieldError(field, 'This field is required');
+                isValid = false;
             }
         });
 
-        // --- MOBILE MENU ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // --- SCROLL REVEAL ANIMATIONS ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => observer.observe(el));
-
-        // --- GALLERY MODAL ---
-        const modal = document.getElementById('gallery-modal');
-        const modalImg = document.getElementById('modal-image');
-        const closeBtn = document.getElementById('modal-close');
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', () => {
-                modal.style.display = 'flex';
-                modalImg.src = item.src;
-            });
-        });
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // --- GEMINI API CALLER (FOR VERCEL DEPLOYMENT) ---
-        async function callGemini(prompt, outputElement, buttonElement) {
-            outputElement.innerHTML = '<div class="spinner"></div> Generating...';
-            if (buttonElement) buttonElement.disabled = true;
-
-            const apiUrl = '/api/gemini';
-            const payload = { prompt: prompt };
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || `API Error: ${response.statusText}`);
-                }
-
-                const result = await response.json();
-                
-                if (result.candidates && result.candidates.length > 0) {
-                    const text = result.candidates[0].content.parts[0].text;
-                    outputElement.innerText = text.replace(/\*/g, ''); // Basic formatting
-                } else {
-                    const errorMessage = result.promptFeedback ? result.promptFeedback.blockReason : "No content received from API.";
-                    throw new Error(errorMessage);
-                }
-
-            } catch (error) {
-                console.error("API call failed:", error);
-                outputElement.innerText = `Sorry, an error occurred: ${error.message}`;
-            } finally {
-                if (buttonElement) buttonElement.disabled = false;
-            }
+        // Validate email format
+        const emailField = document.getElementById('email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailField.value && !emailRegex.test(emailField.value)) {
+            this.showFieldError(emailField, 'Please enter a valid email address');
+            isValid = false;
         }
 
-        // --- AI WELCOME NOTE ---
-        const generateWelcomeBtn = document.getElementById('generate-welcome-btn');
-        const welcomeNoteOutput = document.getElementById('welcome-note-output');
-        generateWelcomeBtn.addEventListener('click', () => {
-            const guestName = document.getElementById('guest_name').value;
-            const purpose = document.getElementById('purpose_of_visit').value;
-            welcomeNoteOutput.classList.remove('hidden');
+        // Validate dates
+        if (!this.validateCheckInDate() || !this.validateCheckOutDate()) {
+            isValid = false;
+        }
 
-            if (!guestName.trim() || !purpose.trim()) {
-                welcomeNoteOutput.innerText = "Please enter your name and purpose of visit first.";
-                return;
-            }
+        return isValid;
+    }
+
+    showFieldError(field, message) {
+        field.classList.add('input-error');
+        const errorId = field.id + '_error';
+        const errorElement = document.getElementById(errorId);
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+    }
+
+    clearFieldError(field) {
+        field.classList.remove('input-error', 'input-success');
+        const errorId = field.id + '_error';
+        const errorElement = document.getElementById(errorId);
+        if (errorElement) {
+            errorElement.classList.add('hidden');
+        }
+    }
+
+    showFieldSuccess(field) {
+        field.classList.add('input-success');
+        field.classList.remove('input-error');
+    }
+
+    async handleSubmit(e) {
+        e.preventDefault();
+        
+        if (!this.validateForm()) {
+            this.showMessage('Please fix the errors above and try again.', 'error');
+            return;
+        }
+
+        this.submitBtn.disabled = true;
+        this.submitBtn.innerHTML = '<div class="spinner"></div>Processing...';
+        this.showMessage('Submitting your request...', 'info');
+
+        try {
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 2000));
             
-            const prompt = `Generate a short, warm, and professional welcome message for a guest named "${guestName}" who is visiting Thapar Institute for the following reason: "${purpose}". The message should be about 2-3 sentences long and welcoming.`;
-            callGemini(prompt, welcomeNoteOutput, generateWelcomeBtn);
+            // Mock successful response
+            this.showMessage('Request received! We will confirm your booking via email within 24 hours.', 'success');
+            this.form.reset();
+            this.durationDisplay.classList.add('hidden');
+            
+            // Reset date input styling
+            [this.checkInInput, this.checkOutInput].forEach(input => {
+                input.classList.remove('has-value');
+            });
+            
+            // Hide welcome note
+            document.getElementById('welcome-note-output').classList.add('hidden');
+            
+        } catch (error) {
+            this.showMessage('An error occurred while submitting your request. Please try again.', 'error');
+        } finally {
+            this.submitBtn.disabled = false;
+            this.submitBtn.innerHTML = 'Submit Request';
+        }
+    }
+
+    showMessage(message, type) {
+        this.responseMessage.textContent = message;
+        this.responseMessage.className = `mt-6 text-center font-medium min-h-[1.5rem] ${
+            type === 'success' ? 'text-green-500' :
+            type === 'error' ? 'text-red-500' : 
+            'text-gray-300'
+        }`;
+    }
+}
+
+// Initialize booking form when DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    new BookingFormHandler();
+});
+
+// --- DYNAMIC HEADER ---
+const header = document.getElementById('main-header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+    } else {
+        header.classList.remove('header-scrolled');
+    }
+});
+
+// --- MOBILE MENU ---
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// --- SCROLL REVEAL ANIMATIONS ---
+const revealElements = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+revealElements.forEach(el => observer.observe(el));
+
+// --- GALLERY MODAL ---
+const modal = document.getElementById('gallery-modal');
+const modalImg = document.getElementById('modal-image');
+const closeBtn = document.getElementById('modal-close');
+document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = item.src;
+    });
+});
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// --- FIXED GEMINI API CALLER ---
+async function callGeminiAPI(prompt, outputElement, buttonElement) {
+    // Replace 'YOUR_GEMINI_API_KEY' with your actual API key
+    const GEMINI_API_KEY = 'AIzaSyCTLHeTrwrYf9UzjzBNJ4GKbj409-lqy90';
+    
+    outputElement.innerHTML = '<div class="spinner"></div> Generating...';
+    if (buttonElement) buttonElement.disabled = true;
+
+    const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions';
+    
+    const requestBody = {
+        model: 'gemini-2.0-flash',
+        messages: [
+            { role: 'system', content: 'You are a helpful assistant.' },
+            { role: 'user', content: prompt }
+        ]
+    };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${GEMINI_API_KEY}`
+            },
+            body: JSON.stringify(requestBody)
         });
 
-        // --- AI CAMPUS EXPLORER ---
-        const locationCards = document.querySelectorAll('.campus-card');
-        const campusInfoOutput = document.getElementById('campus-info-output');
-        locationCards.forEach(card => {
-            card.addEventListener('click', () => {
-                locationCards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
+        if (!response.ok) {
+            const errorData = await response.text();
+            throw new Error(`API Error: ${response.status} ${response.statusText} - ${errorData}`);
+        }
 
-                const location = card.dataset.location;
-                const prompt = `As a virtual tour guide for Thapar Institute of Engineering and Technology, write a vibrant and engaging 3-4 sentence description of the "${location}". Highlight its key features and the atmosphere on campus. Make it sound appealing to a first-time visitor or prospective student.`;
-                
-                const allCampusCards = document.querySelectorAll('.campus-card');
-                allCampusCards.forEach(c => c.style.pointerEvents = 'none');
-                
-                callGemini(prompt, campusInfoOutput, null).finally(() => {
-                    allCampusCards.forEach(c => c.style.pointerEvents = 'auto');
-                });
+        const result = await response.json();
+        
+        if (result.choices && result.choices.length > 0) {
+            const content = result.choices[0].message.content;
+            outputElement.innerHTML = content.replace(/\*/g, ''); // Basic formatting
+        } else {
+            throw new Error('No content received from API.');
+        }
+
+    } catch (error) {
+        console.error('API call failed:', error);
+        outputElement.innerHTML = `Sorry, an error occurred: ${error.message}`;
+    } finally {
+        if (buttonElement) buttonElement.disabled = false;
+    }
+}
+
+// --- AI WELCOME NOTE ---
+const generateWelcomeBtn = document.getElementById('generate-welcome-btn');
+const welcomeNoteOutput = document.getElementById('welcome-note-output');
+
+if (generateWelcomeBtn && welcomeNoteOutput) {
+    generateWelcomeBtn.addEventListener('click', () => {
+        const guestName = document.getElementById('guest_name').value;
+        const purpose = document.getElementById('purpose_of_visit').value;
+        welcomeNoteOutput.classList.remove('hidden');
+
+        if (!guestName.trim() || !purpose.trim()) {
+            welcomeNoteOutput.innerHTML = "Please enter your name and purpose of visit first.";
+            return;
+        }
+        
+        const prompt = `Generate a short, warm, and professional welcome message for a guest named "${guestName}" who is visiting Thapar Institute for the following reason: "${purpose}". The message should be about 2-3 sentences long and welcoming.`;
+        callGeminiAPI(prompt, welcomeNoteOutput, generateWelcomeBtn);
+    });
+}
+
+// --- AI CAMPUS EXPLORER ---
+const locationCards = document.querySelectorAll('.campus-card');
+const campusInfoOutput = document.getElementById('campus-info-output');
+
+if (locationCards.length > 0 && campusInfoOutput) {
+    locationCards.forEach(card => {
+        card.addEventListener('click', () => {
+            locationCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+
+            const location = card.dataset.location;
+            const prompt = `As a virtual tour guide for Thapar Institute of Engineering and Technology, write a vibrant and engaging 3-4 sentence description of the "${location}". Highlight its key features and the atmosphere on campus. Make it sound appealing to a first-time visitor or prospective student.`;
+            
+            const allCampusCards = document.querySelectorAll('.campus-card');
+            allCampusCards.forEach(c => c.style.pointerEvents = 'none');
+            
+            callGeminiAPI(prompt, campusInfoOutput, null).finally(() => {
+                allCampusCards.forEach(c => c.style.pointerEvents = 'auto');
             });
         });
+    });
+}
 
-        // --- CAMPUS NAVIGATION ---
-        const locations = {
-            "Academic": [
-                { name: "Guest House", coords: {lat: 30.3541, lon: 76.3640}, mapPos: {x: '45%', y: '65%'} },
-                { name: "Admin Block (TAN)", coords: {lat: 30.3550, lon: 76.3650}, mapPos: {x: '50%', y: '50%'} },
-                { name: "Nava Nalanda Library", coords: {lat: 30.3565, lon: 76.3662}, mapPos: {x: '60%', y: '35%'} },
-                { name: "CSED Department", coords: {lat: 30.3558, lon: 76.3675}, mapPos: {x: '70%', y: '42%'} },
-                { name: "Lecture Hall Complex", coords: {lat: 30.3572, lon: 76.3655}, mapPos: {x: '55%', y: '30%'} },
-            ],
-            "Hostels": [
-                { name: "Hostel J", coords: {lat: 30.3580, lon: 76.3680}, mapPos: {x: '78%', y: '25%'} },
-                { name: "Hostel K", coords: {lat: 30.3585, lon: 76.3670}, mapPos: {x: '65%', y: '20%'} },
-                { name: "Hostel M", coords: {lat: 30.3590, lon: 76.3660}, mapPos: {x: '58%', y: '15%'} },
-                { name: "PG Hostel", coords: {lat: 30.3530, lon: 76.3680}, mapPos: {x: '75%', y: '75%'} },
-            ],
-            "Amenities": [
-                { name: "Health Center", coords: {lat: 30.3535, lon: 76.3650}, mapPos: {x: '52%', y: '70%'} },
-                { name: "Main Canteen (G-Block)", coords: {lat: 30.3545, lon: 76.3670}, mapPos: {x: '65%', y: '58%'} },
-                { name: "Student Center (COS)", coords: {lat: 30.3560, lon: 76.3645}, mapPos: {x: '48%', y: '40%'} },
-            ],
-            "Sports": [
-                 { name: "Sports Complex", coords: {lat: 30.3520, lon: 76.3660}, mapPos: {x: '59%', y: '85%'} },
-                 { name: "Swimming Pool", coords: {lat: 30.3515, lon: 76.3655}, mapPos: {x: '55%', y: '90%'} },
-            ]
-        };
+// --- CAMPUS NAVIGATION ---
+const locations = {
+    "Academic": [
+        { name: "Guest House", coords: {lat: 30.3541, lon: 76.3640}, mapPos: {x: '45%', y: '65%'} },
+        { name: "Admin Block (TAN)", coords: {lat: 30.3550, lon: 76.3650}, mapPos: {x: '50%', y: '50%'} },
+        { name: "Nava Nalanda Library", coords: {lat: 30.3565, lon: 76.3662}, mapPos: {x: '60%', y: '35%'} },
+        { name: "CSED Department", coords: {lat: 30.3558, lon: 76.3675}, mapPos: {x: '70%', y: '42%'} },
+        { name: "Lecture Hall Complex", coords: {lat: 30.3572, lon: 76.3655}, mapPos: {x: '55%', y: '30%'} },
+    ],
+    "Hostels": [
+        { name: "Hostel J", coords: {lat: 30.3580, lon: 76.3680}, mapPos: {x: '78%', y: '25%'} },
+        { name: "Hostel K", coords: {lat: 30.3585, lon: 76.3670}, mapPos: {x: '65%', y: '20%'} },
+        { name: "Hostel M", coords: {lat: 30.3590, lon: 76.3660}, mapPos: {x: '58%', y: '15%'} },
+        { name: "PG Hostel", coords: {lat: 30.3530, lon: 76.3680}, mapPos: {x: '75%', y: '75%'} },
+    ],
+    "Amenities": [
+        { name: "Health Center", coords: {lat: 30.3535, lon: 76.3650}, mapPos: {x: '52%', y: '70%'} },
+        { name: "Main Canteen (G-Block)", coords: {lat: 30.3545, lon: 76.3670}, mapPos: {x: '65%', y: '58%'} },
+        { name: "Student Center (COS)", coords: {lat: 30.3560, lon: 76.3645}, mapPos: {x: '48%', y: '40%'} },
+    ],
+    "Sports": [
+         { name: "Sports Complex", coords: {lat: 30.3520, lon: 76.3660}, mapPos: {x: '59%', y: '85%'} },
+         { name: "Swimming Pool", coords: {lat: 30.3515, lon: 76.3655}, mapPos: {x: '55%', y: '90%'} },
+    ]
+};
 
-        const locationListContainer = document.getElementById('location-list');
-        const searchInput = document.getElementById('location-search');
-        const pinsContainer = document.getElementById('map-pins-container');
-        const directionsContainer = document.getElementById('directions-button-container');
-        const directionsLink = document.getElementById('get-directions-link');
+const locationListContainer = document.getElementById('location-list');
+const searchInput = document.getElementById('location-search');
+const pinsContainer = document.getElementById('map-pins-container');
+const directionsContainer = document.getElementById('directions-button-container');
+const directionsLink = document.getElementById('get-directions-link');
 
-        function renderLocationList(filter = '') {
-            locationListContainer.innerHTML = '';
-            let hasResults = false;
-            for (const category in locations) {
-                const filteredLocations = locations[category].filter(loc => loc.name.toLowerCase().includes(filter.toLowerCase()));
-                if (filteredLocations.length > 0) {
-                    hasResults = true;
-                    const categoryTitle = document.createElement('h3');
-                    categoryTitle.className = 'text-lg font-bold text-red-500 mt-4 first:mt-0';
-                    categoryTitle.textContent = category;
-                    locationListContainer.appendChild(categoryTitle);
+function renderLocationList(filter = '') {
+    if (!locationListContainer) return;
+    
+    locationListContainer.innerHTML = '';
+    let hasResults = false;
+    
+    for (const category in locations) {
+        const filteredLocations = locations[category].filter(loc => loc.name.toLowerCase().includes(filter.toLowerCase()));
+        if (filteredLocations.length > 0) {
+            hasResults = true;
+            const categoryTitle = document.createElement('h3');
+            categoryTitle.className = 'text-lg font-bold text-red-500 mt-4 first:mt-0';
+            categoryTitle.textContent = category;
+            locationListContainer.appendChild(categoryTitle);
 
-                    filteredLocations.forEach(loc => {
-                        const item = document.createElement('div');
-                        item.className = 'p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-red-900/50 transition duration-200';
-                        item.textContent = loc.name;
-                        item.onclick = () => selectLocation(loc);
-                        locationListContainer.appendChild(item);
-                    });
-                }
-            }
-            if (!hasResults) {
-                locationListContainer.innerHTML = `<p class="text-gray-400">No locations found.</p>`;
-            }
+            filteredLocations.forEach(loc => {
+                const item = document.createElement('div');
+                item.className = 'p-3 bg-gray-800 rounded-lg cursor-pointer hover:bg-red-900/50 transition duration-200';
+                item.textContent = loc.name;
+                item.onclick = () => selectLocation(loc);
+                locationListContainer.appendChild(item);
+            });
         }
+    }
+    if (!hasResults) {
+        locationListContainer.innerHTML = `<p class="text-gray-400">No locations found.</p>`;
+    }
+}
 
-        function selectLocation(location) {
-            pinsContainer.innerHTML = ''; // Clear previous pins
-            
-            // Add Guest House pin
-            const guestHouse = locations.Academic[0];
-            const guestHousePin = createPin(guestHouse, true);
-            pinsContainer.appendChild(guestHousePin);
+function selectLocation(location) {
+    if (!pinsContainer) return;
+    
+    pinsContainer.innerHTML = ''; // Clear previous pins
+    
+    // Add Guest House pin
+    const guestHouse = locations.Academic[0];
+    const guestHousePin = createPin(guestHouse, true);
+    pinsContainer.appendChild(guestHousePin);
 
-            // Add selected location pin
-            if (location.name !== guestHouse.name) {
-                const selectedPin = createPin(location, false);
-                pinsContainer.appendChild(selectedPin);
-            }
+    // Add selected location pin
+    if (location.name !== guestHouse.name) {
+        const selectedPin = createPin(location, false);
+        pinsContainer.appendChild(selectedPin);
+    }
 
-            // Show directions button
-            const guestHouseCoords = `${guestHouse.coords.lat},${guestHouse.coords.lon}`;
-            const destinationCoords = `${location.coords.lat},${location.coords.lon}`;
-            directionsLink.href = `https://www.google.com/maps/dir/?api=1&origin=${guestHouseCoords}&destination=${destinationCoords}&travelmode=walking`;
-            directionsContainer.classList.remove('hidden');
-        }
+    // Show directions button
+    if (directionsContainer && directionsLink) {
+        const guestHouseCoords = `${guestHouse.coords.lat},${guestHouse.coords.lon}`;
+        const destinationCoords = `${location.coords.lat},${location.coords.lon}`;
+        directionsLink.href = `https://www.google.com/maps/dir/?api=1&origin=${guestHouseCoords}&destination=${destinationCoords}&travelmode=walking`;
+        directionsContainer.classList.remove('hidden');
+    }
+}
 
-        function createPin(location, isStart = false) {
-             const pin = document.createElement('div');
-             pin.className = 'map-pin';
-             pin.style.left = location.mapPos.x;
-             pin.style.top = location.mapPos.y;
-             
-             const icon = document.createElement('i');
-             icon.className = `fa-solid ${isStart ? 'fa-house-chimney' : 'fa-location-dot'}`;
-             
-             const label = document.createElement('span');
-             label.className = 'pin-label';
-             label.textContent = location.name;
+function createPin(location, isStart = false) {
+     const pin = document.createElement('div');
+     pin.className = 'map-pin';
+     pin.style.left = location.mapPos.x;
+     pin.style.top = location.mapPos.y;
+     
+     const icon = document.createElement('i');
+     icon.className = `fa-solid ${isStart ? 'fa-house-chimney' : 'fa-location-dot'}`;
+     
+     const label = document.createElement('span');
+     label.className = 'pin-label';
+     label.textContent = location.name;
 
-             pin.appendChild(label);
-             pin.appendChild(icon);
-             return pin;
-        }
+     pin.appendChild(label);
+     pin.appendChild(icon);
+     return pin;
+}
 
-        searchInput.addEventListener('input', (e) => renderLocationList(e.target.value));
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => renderLocationList(e.target.value));
+}
 
-        // Initial render
-        renderLocationList();
-        selectLocation(locations.Academic[0]); // Select Guest House by default
-    </script>
-
+// Initial render
+renderLocationList();
+if (locations.Academic && locations.Academic[0]) {
+    selectLocation(locations.Academic[0]); // Select Guest House by default
+}
+</script>
 </body>
 </html>

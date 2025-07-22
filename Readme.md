@@ -80,5 +80,3 @@ This project is licensed under the MIT License.
 
 
 ---
-
-Let me know if you’d like this file exported or if you'd like me to fill in framework-specific commands (e.g., for **Next.js** or **Vite**).

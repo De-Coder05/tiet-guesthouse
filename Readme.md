@@ -51,8 +51,9 @@ npm install
 Running Locally
 npm run dev
 Visit the app at http://localhost:3000
+```
 
-🛠️ Tech Stack
+### 🛠️ Tech Stack
 
 Frontend: HTML5, Tailwind CSS, JavaScript
 Framework: React (via Vite or Next.js)
@@ -73,7 +74,7 @@ Screenshots folder needs to be added manually if not available.
 Devansh Wadhwani – UI/UX Design, Frontend Development
 Want to contribute? Feel free to fork and submit a pull request!
 
-📄 License
+### 📄 License
 
 This project is licensed under the MIT License.
 
